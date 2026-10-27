@@ -152,3 +152,29 @@ ros2 run radius_stopper radius_stopper
 
 The robot moves forward until the IMU-estimated
 radial displacement reaches 10 metres, then stops.
+
+
+
+## Simulation Screenshots
+
+I ran the project in Gazebo using the TurtleBot3 Burger robot. I also took a few screenshots showing the robot in simulation and the distance readings from the terminal.
+
+### 1. Robot in Gazebo
+
+![TurtleBot3 in Gazebo](screenshots/v1_gazebo_simulation.png)
+
+The TurtleBot3 Burger model loaded in the Gazebo simulation environment.
+
+### 2. IMU-Based Stopping Result
+
+![IMU stopping result](screenshots/v1_stopping_result.png)
+
+The terminal output shows the estimated radial distance increasing until it reaches 10.05 m. After reaching the threshold, the estimated distance stays constant.
+
+### 3. Final Odometry Reading
+
+![Final odometry](screenshots/v1_final_odometry.png)
+
+I checked the final position using the `/odom` topic. The robot's final X coordinate was approximately 4.45 m in this screenshot run. This shows the difference between the position reported by odometry and the IMU-based estimate.
+
+The IMU-only approach managed to trigger the stopping condition, although the distance estimation was not very accurate because of accumulated integration errors.
